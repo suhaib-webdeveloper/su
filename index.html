@@ -16,10 +16,8 @@
       <span>S</span><span>u</span><span>h</span><span>a</span><span>i</span><span>b</span>
     </h1> <!-- اسمك أو شعارك -->
     <nav>
-
-      <button id="themeToggle" class="theme-toggle" title="Toggle Theme">
-      🌙</button>
-
+      <button id="themeToggle" class="theme-toggle" title="Toggle Theme">🌙</button>
+      <button id="langToggle" class="lang-toggle" title="تبديل اللغة">AR</button>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About my</a></li>
@@ -53,7 +51,7 @@
   <div class="about-box glow-box">
     <h2>Who Am I?</h2>
     <p class="glow">
-     Hello! I'm <strong>Suhaib</strong>, a web developer born from code and weird dreams.  
+      Hello! I'm <strong>Suhaib</strong>, a web developer born from code and weird dreams.  
          I don’t build boring websites. I build sites that breathe… that move… that make people blink twice. I use a mix of  
          HTML, CSS, JavaScript, and a sprinkle of madness — that’s my recipe.  
          I’m not here to follow trends; I’m here to set them.  
@@ -61,6 +59,9 @@
          My goal? Simple: Make something so unique it makes you ask, “Who made this?”  
          If you’re looking for ordinary, sorry you’re in the wrong place.
     </p>
+    <a href="cv.pdf" class="cv-btn" download>
+      <i class="fa-solid fa-download"></i> Download CV
+    </a>
   </div>
 </section>
 
@@ -99,50 +100,46 @@
 </section>
 
 
-  <!-- قسم المشاريع -->
-
-  <section id="projects" class="reveal">
-  <h2>My Projects</h2>
-
-  <div class="project-grid">
-
-    <!-- المشروع 1 -->
-    <div class="project-card">
-      <h3 class="project-title">Project 1</h3>
-      <img src="images/project1.jpg" alt="No Project Yet">
-      <a href="#" target="_blank" class="project-link">View Project</a>
+ 
+<!-- عداد الإنجازات -->
+<section id="counters" class="reveal counters-section">
+  <div class="counters-grid">
+    <div class="counter-box">
+      <span class="counter" data-target="0.5">0</span>
+      <p>Years Experience</p>
     </div>
-
-    <!-- المشروع 2 -->
-    <div class="project-card">
-      <h3 class="project-title">Project 2</h3>
-      <img src="images/project2.jpg" alt="No Project Yet">
-      <a href="#" target="_blank" class="project-link">View Project</a>
+    <div class="counter-box">
+      <span class="counter" data-target="1">0</span>
+      <p>Projects</p>
     </div>
-
-    <!-- المشروع 3 -->
-    <div class="project-card">
-      <h3 class="project-title">Project 3</h3>
-      <img src="images/project3.jpg" alt="No Project Yet">
-      <a href="#" target="_blank" class="project-link">View Project</a>
+    <div class="counter-box">
+      <span class="counter" data-target="0">0</span>
+      <p>Happy Clients</p>
     </div>
-
-    <!-- المشروع 4 -->
-    <div class="project-card">
-      <h3 class="project-title">Project 4</h3>
-      <img src="images/project4.jpg" alt="No Project Yet">
-      <a href="#" target="_blank" class="project-link">View Project</a>
+    <div class="counter-box">
+      <span class="counter" data-target="7">0</span>
+      <p>Certificates</p>
     </div>
-
-    <!-- المشروع 5 -->
-    <div class="project-card">
-      <h3 class="project-title">Project 5</h3>
-      <img src="images/project5.jpg" alt="No Project Yet">
-      <a href="#" target="_blank" class="project-link">View Project</a>
-    </div>
-
   </div>
-  
+</section>
+
+<!-- قسم المدونة -->
+<section id="blog" class="reveal">
+  <h2>Blog</h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <h3>Why I Love Web Development</h3>
+      <p>Web development is like magic. You create something out of nothing, and with just a few lines of code, you can bring your ideas to life.</p>
+    </div>
+    <div class="blog-card">
+      <h3>How to Stand Out as a Web Developer</h3>
+      <p>It’s not just about code. Creativity, curiosity, and a bit of madness make your work unforgettable!</p>
+    </div>
+    <div class="blog-card">
+      <h3>My Favorite CSS Tricks</h3>
+      <p>From glowing borders to animated backgrounds, CSS is magic in the right hands. Here are my top tricks...</p>
+    </div>
+  </div>
 </section>
 
   <!-- قسم التواصل -->
@@ -156,6 +153,26 @@
   <button type="submit">Send</button>
 </form>
   </section>
+
+  <!-- قسم الأسئلة الشائعة -->
+<section id="faq" class="reveal">
+  <h2>FAQ</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">How can I contact you?</button>
+      <div class="faq-answer">You can use the contact form below or reach me via LinkedIn or Instagram.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do you work with teams or individuals?</button>
+      <div class="faq-answer">I work alone and I enjoy doing so. For me working alone is more rewarding than working with a company or group.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What technologies do you use?</button>
+      <div class="faq-answer">Mainly HTML, CSS, JavaScript, Node.js, and I love exploring new tools and frameworks.</div>
+    </div>
+  </div>
+</section>
+
 
     <!-- الفوتر -->
   <footer>
@@ -191,7 +208,162 @@
       }
     });
   </script>
+
+  <script>
+  // عداد الإنجازات المتحرك
+  document.addEventListener("DOMContentLoaded", function () {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 120; // كلما قل الرقم زادت سرعة العد
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const inc = Math.ceil(target / speed);
+
+          if (count < target) {
+            counter.innerText = count + inc;
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+    };
+
+    // تشغيل العد عند ظهور القسم في الشاشة
+    let started = false;
+    window.addEventListener('scroll', function () {
+      const section = document.getElementById('counters');
+      if (!started && section.getBoundingClientRect().top < window.innerHeight - 100) {
+        animateCounters();
+        started = true;
+      }
+    });
+  });
+</script>
    
 <script src="script.js"></script>
+<script>
+
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.classList.toggle('active');
+    const answer = this.nextElementSibling;
+    if (answer.style.maxHeight) {
+      answer.style.maxHeight = null;
+    } else {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});
+</script>
+<script>
+
+// مؤثر الآلة الكاتبة
+document.addEventListener("DOMContentLoaded", function () {
+  const phrases = [
+    "Web Developer.",
+    "I love creative coding.",
+    "I build unique digital experiences.",
+    "Let's make something awesome together!"
+  ];
+  let i = 0, j = 0, isDeleting = false, current = "", speed = 80;
+  const el = document.getElementById("typewriter");
+
+  function type() {
+    if (!el) return;
+    if (!isDeleting && j <= phrases[i].length) {
+      current = phrases[i].substring(0, j++);
+      el.textContent = current + "|";
+      setTimeout(type, speed);
+    } else if (isDeleting && j >= 0) {
+      current = phrases[i].substring(0, j--);
+      el.textContent = current + "|";
+      setTimeout(type, speed / 2);
+    } else {
+      isDeleting = !isDeleting;
+      if (!isDeleting) i = (i + 1) % phrases.length;
+      setTimeout(type, 900);
+    }
+  }
+  type();
+});
+</script>
+<script>
+// تبديل اللغة مع تأثير ماسح ضوئي
+const langBtn = document.getElementById('langToggle');
+let isArabic = false;
+
+const translations = {
+  ar: {
+    Home: "الرئيسية",
+    "About my": "من أنا",
+    projects: "المشاريع",
+    contact: "تواصل",
+    Blog: "مدونة",
+    "My Skills": "مهاراتي",
+    "Who Am I?": "من أنا؟",
+    "My Projects": "مشاريعي",
+    "Contact Me": "تواصل معي",
+    FAQ: "الأسئلة الشائعة",
+    "My Location": "موقعي",
+    "Rate My Website": "قيّم موقعي",
+    "Download CV": "تحميل السيرة الذاتية",
+    "Years Experience": "سنوات الخبرة",
+    Projects: "المشاريع",
+    "Happy Clients": "عملاء سعداء",
+    Certificates: "الشهادات"
+  },
+  en: {
+    "الرئيسية": "Home",
+    "من أنا": "About my",
+    "المشاريع": "projects",
+    "تواصل": "contact",
+    "مدونة": "Blog",
+    "مهاراتي": "My Skills",
+    "من أنا؟": "Who Am I?",
+    "مشاريعي": "My Projects",
+    "تواصل معي": "Contact Me",
+    "الأسئلة الشائعة": "FAQ",
+    "موقعي": "My Location",
+    "قيّم موقعي": "Rate My Website",
+    "تحميل السيرة الذاتية": "Download CV",
+    "سنوات الخبرة": "Years Experience",
+    "المشاريع": "Projects",
+    "عملاء سعداء": "Happy Clients",
+    "الشهادات": "Certificates"
+  }
+};
+
+langBtn.addEventListener('click', function() {
+  // تأثير ماسح ضوئي
+  langBtn.classList.add('scanning');
+  setTimeout(() => langBtn.classList.remove('scanning'), 700);
+
+  isArabic = !isArabic;
+  langBtn.textContent = isArabic ? "EN" : "AR";
+  document.body.dir = isArabic ? "rtl" : "ltr";
+  document.body.style.textAlign = isArabic ? "right" : "left";
+
+  // تغيير النصوص الأساسية
+  document.querySelectorAll('nav ul li a').forEach(a => {
+    const txt = a.textContent.trim();
+    a.textContent = isArabic ? (translations.ar[txt] || txt) : (translations.en[txt] || txt);
+  });
+  [
+    "h2", "h3", ".cv-btn", ".counter-box p", "#faq h2", "#blog h2", "#skills h2",
+    "#about h2", "#projects h2", "#contact h2", "#counters .counter-box p", "#map h2", "#site-rating h2"
+  ].forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      const txt = el.textContent.trim();
+      el.textContent = isArabic ? (translations.ar[txt] || txt) : (translations.en[txt] || txt);
+    });
+  });
+});
+</script>
 </body>
 </html>
